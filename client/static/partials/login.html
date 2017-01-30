@@ -1,0 +1,12 @@
+<div ng-controller="UserController" class="container">
+		<h4>Trivia Game!</h4>
+		<form name='loginForm' ng-submit='loginUser()'>
+			<input name='name' type='text' ng-model='newUser' ng-minlength='3' required>
+			<!-- <button><a href="/dashboard">Enter</a></button> -->
+			<input type='submit' value='Enter'>
+		</form>
+		<div ng-messages='loginForm.name.$error'>
+			<h3 ng-message="minlength" style="color:red">The user name should be atleast 2 chars long.</h3>
+			<h3 ng-message="required" style="color:red">The user name is required.</h3>
+		</div>
+</div>

@@ -1,0 +1,41 @@
+<div ng-controller="NewQuestionController" class="container">
+
+<div >
+		<ul class="nav navbar-nav ">
+			<li ><a href="#/scoreboard">Home</a></li>
+			<li class="active"><a href='' >Add a Question</a></li>
+			<li ><a href='' ng-click="logout()">Logout</a></li>
+		</ul>
+	</div>
+
+	<br>
+	<br>
+	<h3>New Question</h3>
+
+	<form name="newQuesForm" >
+		
+		Question:<textarea name='question' type="text" ng-model='newQues.question' ng-minlength='15' required></textarea>
+		<br>
+		Correct Answer: <input name='answer' ng-model='newQues.answer' required>
+		<br>
+		Fake Answer 1: <input name='fakeAns1' cols='50' rows='3' ng-model='newQues.fakeAns1' required>
+		<br>
+		Fake Answer 2: <input name='fakeAns2' ng-model='newQues.fakeAns2' required>
+		<br>
+		<button  type="button"  class="btn" ng-click="cancelQues()">Cancel</button>
+		<button  type="button"  class="btn btn-primary" ng-click='addQues()' >Add Question</button>
+
+	</form>
+	<div ng-messages='newQuesForm.question.$error'>
+		<p ng-message="ng-minlength" style="color:red">The Question should be atleast 15 characters long.</p>
+		<p ng-message="required" style="color:red">The Question is required.</p>
+	</div>
+	<div ng-messages='newQuesForm.answer.$error'>
+		<p ng-message="required" style="color:red">The Answer is required.</p>
+	</div>
+	<div ng-messages='newQuesForm.fakeAns1.$error'>
+		<p ng-message="required" style="color:red">The Fake Answer 1 is required.</p>
+	</div>
+	<div ng-messages='newQuesForm.fakeAns2.$error'>
+		<p ng-message="required" style="color:red">The Fake Answer 2 is required.</p>
+	</div>

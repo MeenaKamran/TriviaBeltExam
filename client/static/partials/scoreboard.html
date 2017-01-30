@@ -1,0 +1,47 @@
+<head>
+	<link rel="stylesheet" href="static/css/scoreboardStyles.css" type="text/css">
+</head>
+<div ng-controller="ScoreBoardController" class="container">
+
+	<div >
+		<ul class="nav navbar-nav ">
+			<li class="active"><a href="">Home</a></li>
+			<li><a href='#/new_question' >Add a Question</a></li>
+			<li ><a href='' ng-click="logout()">Logout</a></li>
+		</ul>
+	</div>
+
+	<br>
+	<br>
+
+	<h4>Welcome, {{userName}}!</h4>
+	<div id="trivia_box">
+
+			<input id="play_btn" class="btn btn-primary" type="submit" value="Play" ng-click="playTrivia()">
+			<h5>Click the button above to start the trivia game</h5>
+
+	</div>
+	<br/>
+	<div  class="col-md-5-offset-4" >
+		<label>Search:</label>
+		<input type="text"  ng-model="filter_name" placeholder="search">
+	</div>
+	<div class="col-md-10-offset-1" >
+		<table class="table table-bordered table-striped" >
+	        <thead>
+	          <tr>
+	            <td>Name</td>
+	            <td>Score</td>
+	            <td>Percentage</td>
+	          </tr>
+	        </thead>
+	        <tbody ng-repeat="user in users | filter: filter_name">
+
+	        	<tr>
+	        		<td>{{user.user_name}}</td>
+	        		<td>{{user.score}}/3</td>
+	        		<td>{{user.percent}}%</td>
+	        	</tr>
+
+	        </tbody>
+	</div>

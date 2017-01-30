@@ -1,0 +1,39 @@
+<head>
+	<link rel="stylesheet" href="static/css/playTriviaStyles.css" type="text/css">
+</head>
+
+<div ng-controller="PlayTriviaController" class="container">
+
+	<br>
+	<br>
+	<h3>Hi {{userName}}!</h3>
+	<h3>Choose an answer for each of the questions and submit the test once done</h3>
+	<h3>Good Luck!</h3>
+
+	<form>
+		
+			<ol>
+			<fieldset ng-repeat="ques in questions">
+			<li >
+
+					{{ques.question}}
+					<br/>
+					<ul class="list-unstyled" id="quest_{{$parent.$index}}">
+						<li ng-repeat="answer in ques._answer">
+							<label class="isCorrect_{{answer.selected}}" for="quest_{{$parent.$index}}_answer_{{$index}}">
+							<input type="radio" id="quest_{{$parent.$index}}_ans_{{$index}}" ng-model="answers[$parent.$index]" value="{{answer.answer}}" name="quest_{{$parent.$index}}_answers" />  {{answer.answer}} 
+						</li>
+					</ul>
+
+			</li>
+			</fieldset>
+			</ol>
+
+		<button  type="button"  class="btn" ng-click="cancelTrivia()">Cancel</button>
+		<button  type="button"  class="btn btn-primary" ng-click='submitTrivia()' >Submit</button>
+	</form>
+	<div class="well">
+    	<p>you got {{ correctCount }} out of {{questions.length}} right</p>
+  	</div>
+</div>
+	
